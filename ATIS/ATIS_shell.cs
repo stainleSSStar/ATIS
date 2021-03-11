@@ -8,6 +8,7 @@ namespace ATIS
         public static void Main(string[] args)
         {
             ATIS_config config = new ATIS_config();
+            ATIS_users users_manipulation = new ATIS_users();
             Console.Title = config.getShellTitle();
             Console.SetWindowSize(config.getWindowWidth(), config.getWindowHeight());
             Console.ForegroundColor = config.getShellTextColor();
@@ -35,7 +36,19 @@ namespace ATIS
                     Main(null);
                     break;
                 case "2":
-                    
+                    users_manipulation.addLocalUser("Henryk","zaq1234","Nikt","Goście");
+                    Console.ReadLine();
+                    break;
+                case "3":
+                    users_manipulation.removeLocalUser("Henryk");
+                    Console.ReadLine();
+                    break;
+                case "4":
+                    users_manipulation.getAllUsers();
+                    Console.ReadLine();
+                    break;
+                case "5":
+                    users_manipulation.getAllGroups();
                     Console.ReadLine();
                     break;
                 default:

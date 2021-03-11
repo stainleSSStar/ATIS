@@ -33,6 +33,7 @@ namespace ATIS
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";
         private ProcessWindowStyle wsumchecker_process_window_style = ProcessWindowStyle.Normal;
         private string main_application_already_running_message = "APPLICATION IS ALREADY RUNNING - EXITING";
+        private string account_creation_success_message = "ACCOUNT CREATED SUCCESSFULLY";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
         {
@@ -74,10 +75,13 @@ namespace ATIS
         {
             return wsumchecker_process_window_style;
         }
-        
         public string getMainApplicationAlreadyRunningMessage()
         {
             return main_application_already_running_message;
+        }
+        public string getAccountCreationSuccessMessage()
+        {
+            return account_creation_success_message;
         }
     }
 }
