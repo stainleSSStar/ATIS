@@ -51,6 +51,22 @@ namespace ATIS
                     users_manipulation.getAllGroups();
                     Console.ReadLine();
                     break;
+                case "6":
+                    users_manipulation.RemoveUserFromAdminGroup("Henryk");
+                    Console.ReadLine();
+                    break;
+                case "7":
+                    users_manipulation.addLocalGroup("Normalna");
+                    Console.ReadLine();
+                    break;
+                case "8":
+                    users_manipulation.removeLocalGroup("Normalna");
+                    Console.ReadLine();
+                    break;
+                case "9":
+                    users_manipulation.AddUserToLocalGroup("Henryk","Goście");
+                    Console.ReadLine();
+                    break;
                 default:
                     Console.WriteLine("DEFAULT BLOCK EXECUTED");
                     Console.ReadLine();
