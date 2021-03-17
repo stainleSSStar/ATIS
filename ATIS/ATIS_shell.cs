@@ -331,24 +331,59 @@ namespace ATIS
                             }
                             break;
                         case "2":
-                            
+                            Console.Clear();
+                            Console.Write("PROVIDE A PATH OF THE DIRECTORY (OR LEAVE BLANK FOR DEFAULT) (EXAMPLE 'C:\\installation\\') : ");
+                            string directory_op1 = Console.ReadLine();
+                            if (directory_op1 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE A NAME OF THE FILE (OR LEAVE BLANK TO INSTALL ALL FROM DIRECTORY) : ");
+                            string name_op1 = Console.ReadLine();
+                            if (name_op1 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE ARGUMENTS IF NEEDED (OR LEAVE BLANK FOR NONE) : ");
+                            string arguments_op1 = Console.ReadLine();
+                            if (arguments_op1 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            if (directory_op1 == "") { directory_op1 = installer.getRelativeDefaultPath(); }
+                            if (name_op1 == "") { name_op1 = "ATIS_INSTALL_ALL"; }
+                            Console.Clear();
+                            installer.installEXE(directory_op1, name_op1, arguments_op1);
+                            Thread.Sleep(5000);
+                            Console.Clear();
+                            Main(null);
                             break;
                         case "3":
-                           
+                            Console.Clear();
+                            Console.Write("PROVIDE A PATH OF THE DIRECTORY (OR LEAVE BLANK FOR DEFAULT) (EXAMPLE 'C:\\installation\\') : ");
+                            string directory_op3 = Console.ReadLine();
+                            if (directory_op3 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE A NAME OF THE FILE (OR LEAVE BLANK TO INSTALL ALL FROM DIRECTORY) : ");
+                            string name_op3 = Console.ReadLine();
+                            if (name_op3 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE ARGUMENTS IF NEEDED (OR LEAVE BLANK FOR NONE) : ");
+                            string arguments_op3 = Console.ReadLine();
+                            if (arguments_op3 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            if (directory_op3 == "") { directory_op3 = installer.getRelativeDefaultPath(); }
+                            if (name_op3 == "") { name_op3 = "ATIS_INSTALL_ALL"; }
+                            Console.Clear();
+                            installer.installMSI(directory_op3, name_op3, arguments_op3);
+                            Thread.Sleep(5000);
+                            Console.Clear();
+                            Main(null);
                             break;
                         case "4":
-                           
-                            break;
-                        case "B":
                             Console.Clear();
-                            Main(null);
-                            break;
-                        case "b":
+                            Console.Write("PROVIDE A PATH OF THE DIRECTORY (OR LEAVE BLANK FOR DEFAULT) (EXAMPLE 'C:\\installation\\') : ");
+                            string directory_op4 = Console.ReadLine();
+                            if (directory_op4 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE ARGUMENTS IF NEEDED FOR MSI (OR LEAVE BLANK FOR NONE) : ");
+                            string arguments_msi_op4 = Console.ReadLine();
+                            if (arguments_msi_op4 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            Console.Write("\nPROVIDE ARGUMENTS IF NEEDED FOR EXE (OR LEAVE BLANK FOR NONE) : ");
+                            string arguments_exe_op4 = Console.ReadLine();
+                            if (arguments_exe_op4 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                            if (directory_op4 == "") { directory_op4 = installer.getRelativeDefaultPath(); }
+                            string name_op4 = "ATIS_INSTALL_ALL";
                             Console.Clear();
-                            Main(null);
-                            break;
-                        default:
-                            Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                            installer.installMSI(directory_op4, name_op4, arguments_msi_op4);
+                            installer.installEXE(directory_op4, name_op4, arguments_exe_op4);
                             Thread.Sleep(5000);
                             Console.Clear();
                             Main(null);

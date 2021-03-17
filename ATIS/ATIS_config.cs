@@ -60,13 +60,22 @@ namespace ATIS
 
         private string shell_installation_list =
        "=======================================================================================================================\n" +
-       "                                                      INSTALLATION MENU                    \n" +
+       "                                                        INSTALLATION MENU                    \n" +
        "=======================================================================================================================\n\n" +
        "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
        "(1) BROWSERS INSTALLATION MENU\n" +
        "(2) INSTALLATION OF EXE FILES\n" +
        "(3) INSTALLATION OF MSI FILES\n" +
-       "(4) \n" +
+       "(4) INSTALLATION OF BOTH TYPES IN DIRECTORY\n" +
+       "(B) GO BACK TO MAIN MENU\n";
+
+        private string shell_installation_msi_list =
+       "=======================================================================================================================\n" +
+       "                                                     INSTALLATION MENU (MSI)                    \n" +
+       "=======================================================================================================================\n\n" +
+       "                                     WARNING: THIS METHOD ONLY INSTALLS MSI FILE/FILES\n\n\n" +
+       "(1) SUPERVISED INSTALLATION\n" +
+       "(2) SILENT INSTALLATION\n" +
        "(B) GO BACK TO MAIN MENU\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
@@ -120,6 +129,10 @@ namespace ATIS
         public string getShellInstallationList()
         {
             return shell_installation_list;
+        }
+        public string getShellInstallationMsiList()
+        {
+            return shell_installation_msi_list;
         }
     }
 }
