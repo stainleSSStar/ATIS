@@ -32,7 +32,7 @@ namespace ATIS
                     }
                     catch
                     {
-                        Console.WriteLine("\nGROUP NOT FOUND IN A SYSTEM - SKIPPING");
+                        Console.WriteLine("\nGROUP NOT FOUND IN A SYSTEM OR NOT PROVIDED - SKIPPING");
                         Console.WriteLine("SUCCESSFULLY ADDED NEW USER");
                     }
                 }

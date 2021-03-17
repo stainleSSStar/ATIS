@@ -18,7 +18,7 @@ namespace ATIS
         "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
         "(1) CHECK CHECKSUMS OF A FILE (USING WSUMCHECKER)\n" +
         "(2) USERS AND GROUPS MANIPULATION MENU\n" +
-        "(3) \n" +
+        "(3) INSTALLATION CONTROL MENU\n" +
         "(4) \n" +
         "(5) \n" +
         "(6) \n" +
@@ -45,6 +45,28 @@ namespace ATIS
        "(6) REMOVE USER FROM THE LOCAL GROUP\n" +
        "(7) GET ALL USERS AND GROUPS\n" +
        "(8) GET ALL CREATED GROUPS\n" +
+       "(B) GO BACK TO MAIN MENU\n";
+
+        private string shell_browsers_list =
+       "=======================================================================================================================\n" +
+       "                                                  BROWSERS INSTALLATION MENU                    \n" +
+       "=======================================================================================================================\n\n" +
+       "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
+       "(1) MOZILLA FIREFOX\n" +
+       "(2) GOOGLE CHROME\n" +
+       "(3) VIVALDI\n" +
+       "(4) OPERA\n"+
+       "(B) GO BACK TO MAIN MENU\n";
+
+        private string shell_installation_list =
+       "=======================================================================================================================\n" +
+       "                                                      INSTALLATION MENU                    \n" +
+       "=======================================================================================================================\n\n" +
+       "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
+       "(1) BROWSERS INSTALLATION MENU\n" +
+       "(2) INSTALLATION OF EXE FILES\n" +
+       "(3) INSTALLATION OF MSI FILES\n" +
+       "(4) \n" +
        "(B) GO BACK TO MAIN MENU\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
@@ -90,6 +112,14 @@ namespace ATIS
         public string getShellSeparator()
         {
             return shell_separator;
+        }
+        public string getShellBrowsersList()
+        {
+            return shell_browsers_list;
+        }
+        public string getShellInstallationList()
+        {
+            return shell_installation_list;
         }
     }
 }

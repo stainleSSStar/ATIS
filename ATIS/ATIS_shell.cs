@@ -67,7 +67,11 @@ namespace ATIS
                         break;
                         case "2":
                             Console.Clear();
-                            Console.Write("NAME OF THE USER : ");
+                            Console.WriteLine(config.getShellSeparator());
+                            Console.WriteLine("                                              AVAILABLE USERS IN THE SYSTEM");
+                            Console.WriteLine(config.getShellSeparator());
+                            users_manipulation.getAllUsers();
+                            Console.Write("\nNAME OF THE USER : ");
                             string name_op2 = Console.ReadLine();
                             if (name_op2 == "ATIS_BACK") { Console.Clear(); Main(null); }
                             users_manipulation.removeLocalUser(name_op2);
@@ -203,19 +207,156 @@ namespace ATIS
                     }
                     break;
                 case "3":
-                    config.getShellUsersList();
-                    Console.ReadKey();
+                    Console.Clear();
+                    Console.WriteLine(config.getShellInstallationList());
+                    config.setOperationSwitcher("NOT SELECTED YET");
+                    Console.Write("CHOOSEN OPERATION: ");
+                    config.setOperationSwitcher(Console.ReadLine());
+                    switch (config.getOperationSwitcher())
+                    {
+                        case "1":
+                            Console.Clear();
+                            Console.WriteLine(config.getShellBrowsersList());
+                            config.setOperationSwitcher("NOT SELECTED YET");
+                            Console.Write("CHOOSEN OPERATION: ");
+                            config.setOperationSwitcher(Console.ReadLine());
+                            switch (config.getOperationSwitcher())
+                            {
+                                case "1":
+                                    Console.Clear();
+                                    if (web.pingHost("www.google.com"))
+                                    {
+                                        Console.WriteLine("DOWNLOADING AND INSTALLING MOZILLA FIREFOX BROWSER...");
+                                        Console.WriteLine("DOWNLOADING MOZILLA FIREFOX INSTALLER...");
+                                        web.downloadFileFromURL("https://download.mozilla.org/?product=firefox-stub&os=win&lang=pl", web.getRelativeDefaultPath(), "firefox_installer", ".exe");
+                                        Console.WriteLine("DOWNLOAD FINISHED - INSTALLING...");
+                                        installer.installEXE(".\\DOWNLOADS\\", "firefox_installer", "");
+                                        Console.WriteLine("INSTALLATION FINISHED SUCCESSFULLY");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Write("=======================================================================================================================\n");
+                                        Console.WriteLine("CONNECTION CANNOT BE ESTABLISHED CHECK YOUR INTERNET - OPERATION FAILED");
+                                        Console.Write("=======================================================================================================================\n");
+                                        Thread.Sleep(5000);
+                                        Main(null);
+                                    }
+                                    break;
+                                case "2":
+                                    Console.Clear();
+                                    if (web.pingHost("www.google.com"))
+                                    {
+                                        Console.WriteLine("DOWNLOADING AND INSTALLING GOOGLE CHROME BROWSER...");
+                                        Console.WriteLine("DOWNLOADING GOOGLE CHROME INSTALLER...");
+                                        web.downloadFileFromURL("http://dl.google.com/chrome/install/149.27/chrome_installer.exe", web.getRelativeDefaultPath(), "gchrome_installer", ".exe");
+                                        Console.WriteLine("DOWNLOAD FINISHED - INSTALLING...");
+                                        installer.installEXE(".\\DOWNLOADS\\", "gchrome_installer", "");
+                                        Console.WriteLine("INSTALLATION FINISHED SUCCESSFULLY");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Write("=======================================================================================================================\n");
+                                        Console.WriteLine("CONNECTION CANNOT BE ESTABLISHED CHECK YOUR INTERNET - OPERATION FAILED");
+                                        Console.Write("=======================================================================================================================\n");
+                                        Thread.Sleep(5000);
+                                        Main(null);
+                                    }
+                                    break;
+                                case "3":
+                                    Console.Clear();
+                                    if (web.pingHost("www.google.com"))
+                                    {
+                                        Console.WriteLine("DOWNLOADING AND INSTALLING VIVALDI BROWSER...");
+                                        Console.WriteLine("DOWNLOADING VIVALDI INSTALLER...");
+                                        web.downloadFileFromURL("https://downloads.vivaldi.com/stable/Vivaldi.3.6.2165.40.x64.exe", web.getRelativeDefaultPath(), "vivaldi_installer", ".exe");
+                                        Console.WriteLine("DOWNLOAD FINISHED - INSTALLING...");
+                                        installer.installEXE(".\\DOWNLOADS\\", "vivaldi_installer", "");
+                                        Console.WriteLine("INSTALLATION FINISHED SUCCESSFULLY");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Write("=======================================================================================================================\n");
+                                        Console.WriteLine("CONNECTION CANNOT BE ESTABLISHED CHECK YOUR INTERNET - OPERATION FAILED");
+                                        Console.Write("=======================================================================================================================\n");
+                                        Thread.Sleep(5000);
+                                        Main(null);
+                                    }
+                                    break;
+                                case "4":
+                                    Console.Clear();
+                                    if (web.pingHost("www.google.com"))
+                                    {
+                                        Console.WriteLine("DOWNLOADING AND INSTALLING OPERA BROWSER...");
+                                        Console.WriteLine("DOWNLOADING OPERA INSTALLER...");
+                                        web.downloadFileFromURL("https://downloads.vivaldi.com/stable/Vivaldi.3.6.2165.40.x64.exe", web.getRelativeDefaultPath(), "opera_installer", ".exe");
+                                        Console.WriteLine("DOWNLOAD FINISHED - INSTALLING...");
+                                        installer.installEXE(".\\DOWNLOADS\\", "opera_installer", "");
+                                        Console.WriteLine("INSTALLATION FINISHED SUCCESSFULLY");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Write("=======================================================================================================================\n");
+                                        Console.WriteLine("CONNECTION CANNOT BE ESTABLISHED CHECK YOUR INTERNET - OPERATION FAILED");
+                                        Console.Write("=======================================================================================================================\n");
+                                        Thread.Sleep(5000);
+                                        Main(null);
+                                    }
+                                    break;
+                                case "B":
+                                    Console.Clear();
+                                    Main(null);
+                                    break;
+                                case "b":
+                                    Console.Clear();
+                                    Main(null);
+                                    break;
+                                default:
+                                    Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                                    Thread.Sleep(5000);
+                                    Console.Clear();
+                                    Main(null);
+                                    break;
+                            }
+                            break;
+                        case "2":
+                            
+                            break;
+                        case "3":
+                           
+                            break;
+                        case "4":
+                           
+                            break;
+                        case "B":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        case "b":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        default:
+                            Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                            Thread.Sleep(5000);
+                            Console.Clear();
+                            Main(null);
+                            break;
+                    }
                     break;
-                case "10":
-                    installer.installMSI(".\\INSTALLATION\\");
-                    Console.ReadLine();
-                    break;
-                case "11":
-                    installer.installEXE(".\\INSTALLATION\\");
-                    Console.ReadLine();
-                    break;
-                case "12":
-                    web.downloadFileFromURL("https://download.mozilla.org/?product=firefox-stub&os=win&lang=pl", ".\\DOWNLOADS\\","firefox1");
+                case "4":
+                    //installer.installMSI(".\\INSTALLATION\\");
                     Console.ReadLine();
                     break;
                 case "E":
@@ -227,6 +368,7 @@ namespace ATIS
                 default:
                     Console.WriteLine("WRONG COMMAND - RETRY");
                     Thread.Sleep(2000);
+                    Console.Clear();
                     Main(null);
                     break;
             }
