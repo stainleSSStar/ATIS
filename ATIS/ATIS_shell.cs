@@ -388,6 +388,20 @@ namespace ATIS
                             Console.Clear();
                             Main(null);
                             break;
+                        case "B":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        case "b":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        default:
+                            Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                            Thread.Sleep(5000);
+                            Console.Clear();
+                            Main(null);
+                            break;
                     }
                     break;
                 case "4":
