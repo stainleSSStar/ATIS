@@ -475,6 +475,65 @@ namespace ATIS
                             break;
                     }
                     break;
+                case "5":
+                    Console.Clear();
+                    Console.WriteLine(config.getShellServerInstalledSoftwareList());
+                    if (Directory.Exists(server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName()))
+                    {
+                        server.getServerInstalledSoftwareList();
+                        server.getServerInstalledAppsFromMYSQL(server.getConnectionMYSQLString());
+                    }
+                    else
+                    {
+                        Console.Write("");
+                    }
+                    config.setOperationSwitcher("NOT SELECTED YET");
+                    Console.WriteLine("\n\n(B) GO BACK TO MAIN MENU");
+                    Console.Write("\nCHOOSEN OPERATION: ");
+                    config.setOperationSwitcher(Console.ReadLine());
+                    switch (config.getOperationSwitcher())
+                    {
+                        case "B":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        case "b":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        default:
+                            try
+                            {
+                                if (server.getServerInstalledSoftwareList().Contains(Convert.ToInt32(config.getOperationSwitcher())))
+                                {
+                                    string main_path = server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName();
+                                    string specific_path = main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher()));
+                                    DirectoryInfo directory = new DirectoryInfo(specific_path);
+                                    wrapper.Empty(directory);
+                                    Directory.Delete(specific_path);
+                                    Console.WriteLine("TOOL SUCCESSFULLY REMOVED - BACK TO MAIN MENU");
+                                    Thread.Sleep(5000);
+                                    Console.Clear();
+                                    Main(null);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("THERE IS NO SUCH NUMBER - BACK TO MAIN MENU");
+                                    Thread.Sleep(5000);
+                                    Console.Clear();
+                                    Main(null);
+                                }
+                            }
+                            catch (Exception exception_log)
+                            {
+                                Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                                Thread.Sleep(5000);
+                                Console.Clear();
+                                Main(null);
+                            }
+                            break;
+                    }
+                    break;
                 case "E":
                     Environment.Exit(0);
                     break;

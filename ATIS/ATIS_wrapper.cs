@@ -48,7 +48,6 @@ namespace ATIS
                 Thread.Sleep(5000);
             }
         }
-
         public void DecompressServer(DirectoryInfo directory_path, string name_of_file)
         {
             try
@@ -67,6 +66,11 @@ namespace ATIS
                 Console.WriteLine("FILE DOESNT EXIST OR YOU DO NOT HAVE PREMISSIONS TO DO THAT - OPERATION FAILED");
                 Thread.Sleep(5000);
             }
+        }
+        public void Empty(DirectoryInfo directory)
+        {
+            foreach (FileInfo file in directory.GetFiles()) file.Delete();
+            foreach (DirectoryInfo directory_inside in directory.GetDirectories()) directory_inside.Delete(true);
         }
     }
 }

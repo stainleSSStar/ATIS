@@ -264,6 +264,70 @@ namespace ATIS
                 return "";
             }
         }
+        private List<Int32> list_of_server_installed_software_ids = new List<Int32>();
+        public List<Int32> getListOfServerInstalledSoftwareIds()
+        {
+            return list_of_server_installed_software_ids;
+        }
+        public List<Int32> getServerInstalledSoftwareList()
+        {
+            try
+            {
+                DirectoryInfo directory_path = new DirectoryInfo(server_installation_directory_path+"\\"+server_installation_directory_name);
+                foreach (DirectoryInfo directory in directory_path.GetDirectories())
+                {
+                    list_of_server_installed_software_ids.Add(Convert.ToInt32(directory.Name));
+                }
+            }
+            catch (Exception exception_log)
+            {
+                Console.Clear();
+                Console.Write("=======================================================================================================================\n");
+                Console.WriteLine(exception_log.ToString() + "\n");
+                Console.Write("=======================================================================================================================\n");
+                Console.WriteLine("DIRECTORY DOES NOT EXIST - OPERATION FAILED");
+                Thread.Sleep(5000);
+            }
+            return list_of_server_installed_software_ids;
+        }
+        public void getServerInstalledAppsFromMYSQL(string database_connection_string)
+        {
+            list_of_server_installed_software_ids.Sort();
+            foreach (int directory_number in list_of_server_installed_software_ids)
+            {
+                try
+                {
+                    MySqlConnection database_connection = new MySqlConnection(database_connection_string);
+                    MySqlCommand database_command = new MySqlCommand("SELECT * FROM software WHERE id=" + directory_number, database_connection);
+                    database_command.CommandTimeout = 60;
+                    MySqlDataReader reader;
+                    database_connection.Open();
+                    reader = database_command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            string[] db_read = { reader.GetString(1), reader.GetString(2), reader.GetString(3) };
+                            Console.WriteLine("("+db_read[0]+") "+db_read[1]+" "+db_read[2]);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("DATABASE IS EMPTY");
+                    }
+                    database_connection.Close();
+                }
+                catch (Exception exception_log)
+                {
+                    Console.Clear();
+                    Console.Write("=======================================================================================================================\n");
+                    Console.WriteLine(exception_log.ToString() + "\n");
+                    Console.Write("=======================================================================================================================\n");
+                    Console.WriteLine("DATABASE ERROR - OPERATION FAILED");
+                    Thread.Sleep(5000);
+                }
+            }
+        }
 
     }
 }

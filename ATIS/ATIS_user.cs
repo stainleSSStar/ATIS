@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.DirectoryServices;
-using System.DirectoryServices.AccountManagement;
 using System.Globalization;
-using System.Security.Principal;
 using System.Threading;
 
 namespace ATIS

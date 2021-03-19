@@ -20,7 +20,7 @@ namespace ATIS
         "(2) USERS AND GROUPS MANIPULATION MENU\n" +
         "(3) INSTALLATION CONTROL MENU\n" +
         "(4) GET ACCESS TO ATIS SERVER TOOLS\n" +
-        "(5) \n" +
+        "(5) REMOVE ATIS TOOLS MENU\n" +
         "(6) \n" +
         "(7) \n" +
         "(8) \n" +
@@ -74,6 +74,12 @@ namespace ATIS
        "                                               PACKAGES AVAILABLE IN ATIS SERVER                    \n" +
        "=======================================================================================================================\n\n" +
        "                                                  CHOOSE ONE BELOW TO START\n\n\n";
+        private string shell_server_installed_software_list =
+       "=======================================================================================================================\n" +
+       "                                               PACKAGES PRESENT IN ATIS DIRECTORY                    \n" +
+       "=======================================================================================================================\n\n" +
+       "                                                   CHOOSE ONE BELOW TO START\n" +
+       "                                IF THE LIST IS EMPTY NOTHING WAS INSTALLED FROM ATIS SERVER\n\n\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
         {
@@ -130,6 +136,10 @@ namespace ATIS
         public string getShellServerMYSQLSoftwareList()
         {
             return shell_server_mysql_software_list;
+        }
+        public string getShellServerInstalledSoftwareList()
+        {
+            return shell_server_installed_software_list;
         }
     }
 }
