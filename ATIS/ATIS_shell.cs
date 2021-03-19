@@ -509,8 +509,13 @@ namespace ATIS
                                     string main_path = server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName();
                                     string specific_path = main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher()));
                                     DirectoryInfo directory = new DirectoryInfo(specific_path);
+                                    DirectoryInfo main_directory = new DirectoryInfo(main_path);
                                     wrapper.Empty(directory);
                                     Directory.Delete(specific_path);
+                                    if (wrapper.CountAllFilesAndDirectories(main_directory) == 0)
+                                    {
+                                        Directory.Delete(main_path);
+                                    }
                                     Console.WriteLine("TOOL SUCCESSFULLY REMOVED - BACK TO MAIN MENU");
                                     Thread.Sleep(5000);
                                     Console.Clear();

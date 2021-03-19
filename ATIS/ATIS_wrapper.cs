@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Threading;
@@ -71,6 +72,13 @@ namespace ATIS
         {
             foreach (FileInfo file in directory.GetFiles()) file.Delete();
             foreach (DirectoryInfo directory_inside in directory.GetDirectories()) directory_inside.Delete(true);
+        }
+        public int CountAllFilesAndDirectories(DirectoryInfo directory)
+        {
+            List<string> file_list = new List<string>();
+            foreach (FileInfo file in directory.GetFiles()) file_list.Add(file.FullName);
+            foreach (DirectoryInfo directory_inside in directory.GetDirectories()) file_list.Add(directory_inside.FullName);
+            return file_list.Count;
         }
     }
 }
