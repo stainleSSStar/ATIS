@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 namespace ATIS
 {
@@ -12,6 +13,8 @@ namespace ATIS
             ATIS_dump dump = new ATIS_dump();
             ATIS_installer installer = new ATIS_installer();
             ATIS_web web = new ATIS_web();
+            ATIS_server server = new ATIS_server();
+            ATIS_wrapper wrapper = new ATIS_wrapper();
             Console.Title = config.getShellTitle();
             Console.SetWindowSize(config.getWindowWidth(), config.getWindowHeight());
             Console.ForegroundColor = config.getShellTextColor();
@@ -405,8 +408,72 @@ namespace ATIS
                     }
                     break;
                 case "4":
-                    //installer.installMSI(".\\INSTALLATION\\");
-                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine(config.getShellServerMYSQLSoftwareList());
+                    server.listAllServerApps(server.getConnectionMYSQLString());
+                    config.setOperationSwitcher("NOT SELECTED YET");
+                    Console.WriteLine("\n\n(B) GO BACK TO MAIN MENU");
+                    Console.Write("\nCHOOSEN OPERATION: ");
+                    config.setOperationSwitcher(Console.ReadLine());
+                    switch (config.getOperationSwitcher())
+                    {
+                        case "B":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        case "b":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        default:
+                            try
+                            {
+                                server.makeListOfNumbersOfApps(server.getConnectionMYSQLString());
+                                if (server.getListOfNumbersOfApps().Contains(Convert.ToInt32(config.getOperationSwitcher())))
+                                {
+                                    string source = server.getSourceOfAppById(server.getConnectionMYSQLString(), server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())));
+                                    string main_path = server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName();
+                                    string specific_path = main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher()));
+                                    if (!Directory.Exists(specific_path))
+                                    {
+                                        Directory.CreateDirectory(main_path);
+                                        Directory.CreateDirectory(specific_path);
+                                        server.serverDownload(server.getServerRelativeDatabasePath() + source, server.getServerFTPUser(), server.getServerFTPPass(), main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())) + "\\" + source);
+                                        DirectoryInfo directory = new DirectoryInfo(specific_path + "\\");
+                                        wrapper.DecompressServer(directory, source);
+                                        File.Delete(specific_path + "\\" + source);
+                                        Console.Clear();
+                                        Console.WriteLine("OPERATION FINISHED SUCCESSFULLY");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("THIS ENTRY IS ALREADY INSTALLED");
+                                        Thread.Sleep(5000);
+                                        Console.Clear();
+                                        Main(null);
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("THERE IS NO SUCH NUMBER - BACK TO MAIN MENU");
+                                    Thread.Sleep(5000);
+                                    Console.Clear();
+                                    Main(null);
+                                }
+                            }
+                            catch (Exception exception_log)
+                            {
+                                Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
+                                Thread.Sleep(5000);
+                                Console.Clear();
+                                Main(null);
+                            }
+                            break;
+                    }
                     break;
                 case "E":
                     Environment.Exit(0);

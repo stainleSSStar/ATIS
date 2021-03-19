@@ -19,14 +19,14 @@ namespace ATIS
         "(1) CHECK CHECKSUMS OF A FILE (USING WSUMCHECKER)\n" +
         "(2) USERS AND GROUPS MANIPULATION MENU\n" +
         "(3) INSTALLATION CONTROL MENU\n" +
-        "(4) \n" +
+        "(4) GET ACCESS TO ATIS SERVER TOOLS\n" +
         "(5) \n" +
         "(6) \n" +
         "(7) \n" +
         "(8) \n" +
-        "(9) INSTALL SOFTWARE FROM OTHER SOURCES (MSI)\n" +
-        "(10) UNINSTALL SOFTWARE FROM OTHER SOURCES (MSI)\n" +
-        "(11) firewall / browser / backup / zip /\n" +
+        "(9) \n" +
+        "(10) \n" +
+        "(11) firewall / backup / zip / wupdate\n" +
         "(E) EXIT THE SCRIPT\n";
         private string operation_switcher = "";
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";
@@ -69,14 +69,11 @@ namespace ATIS
        "(4) INSTALLATION OF BOTH TYPES IN DIRECTORY\n" +
        "(B) GO BACK TO MAIN MENU\n";
 
-        private string shell_installation_msi_list =
+        private string shell_server_mysql_software_list =
        "=======================================================================================================================\n" +
-       "                                                     INSTALLATION MENU (MSI)                    \n" +
+       "                                               PACKAGES AVAILABLE IN ATIS SERVER                    \n" +
        "=======================================================================================================================\n\n" +
-       "                                     WARNING: THIS METHOD ONLY INSTALLS MSI FILE/FILES\n\n\n" +
-       "(1) SUPERVISED INSTALLATION\n" +
-       "(2) SILENT INSTALLATION\n" +
-       "(B) GO BACK TO MAIN MENU\n";
+       "                                                  CHOOSE ONE BELOW TO START\n\n\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
         {
@@ -130,9 +127,9 @@ namespace ATIS
         {
             return shell_installation_list;
         }
-        public string getShellInstallationMsiList()
+        public string getShellServerMYSQLSoftwareList()
         {
-            return shell_installation_msi_list;
+            return shell_server_mysql_software_list;
         }
     }
 }
