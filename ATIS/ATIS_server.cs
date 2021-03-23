@@ -20,7 +20,7 @@ namespace ATIS
             return server_ftp_pass;
         }
         private string server_relative_backup_path = "ftp://127.0.0.1/ATISBACKUP/";
-        public string getServerRelativePath()
+        public string getServerRelativeBackupPath()
         {
             return server_relative_backup_path;
         }

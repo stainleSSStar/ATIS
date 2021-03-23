@@ -21,12 +21,12 @@ namespace ATIS
         "(3) INSTALLATION CONTROL MENU\n" +
         "(4) GET ACCESS TO ATIS SERVER TOOLS\n" +
         "(5) REMOVE ATIS TOOLS MENU\n" +
-        "(6) \n" +
+        "(6) BACKUP A FOLDER WITH DATA AND UPLOAD TO ATIS SERVER\n" +
         "(7) \n" +
         "(8) \n" +
         "(9) \n" +
         "(10) \n" +
-        "(11) firewall / backup / zip / wupdate\n" +
+        "(11) firewall / wupdate\n" +
         "(E) EXIT THE SCRIPT\n";
         private string operation_switcher = "";
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";
@@ -60,7 +60,7 @@ namespace ATIS
 
         private string shell_installation_list =
        "=======================================================================================================================\n" +
-       "                                                        INSTALLATION MENU                    \n" +
+       "                                                      INSTALLATION MENU                    \n" +
        "=======================================================================================================================\n\n" +
        "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
        "(1) BROWSERS INSTALLATION MENU\n" +
@@ -80,6 +80,12 @@ namespace ATIS
        "=======================================================================================================================\n\n" +
        "                                                   CHOOSE ONE BELOW TO START\n" +
        "                                IF THE LIST IS EMPTY NOTHING WAS INSTALLED FROM ATIS SERVER\n\n\n";
+        private string shell_server_ftp_upload_message_list =
+       "=======================================================================================================================\n" +
+       "                                            UPLOADING FILES ON TO ATIS BACKUP SERVER                    \n" +
+       "=======================================================================================================================\n\n" +
+       "                                 PROVIDE AN ABSOLUTE PATH TO A FOLDER THAT NEEDS TO BE SAVED\n" +
+       "                   WHEN UPLOAD IS SUCCESSFULL THEN YOU WILL BE ABLE TO ACCESS IT BY USING ANY FTP MANAGER\n\n\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
         {
@@ -140,6 +146,10 @@ namespace ATIS
         public string getShellServerInstalledSoftwareList()
         {
             return shell_server_installed_software_list;
+        }
+        public string getShellServerFTPUploadMessageList()
+        {
+            return shell_server_ftp_upload_message_list;
         }
     }
 }

@@ -12,13 +12,8 @@ namespace ATIS
         {
             try
             {
-                foreach (DirectoryInfo directory in directory_path.GetDirectories())
-                {
-                    var path = directory_path.FullName;
-                    string start_path = path + directory.Name;
-                    string zip_path = path + "" + archive_name + ".zip";
-                    ZipFile.CreateFromDirectory(start_path, zip_path);
-                }
+                    string zip_path = directory_path.FullName + "\\" + archive_name + ".zip";
+                    ZipFile.CreateFromDirectory(directory_path.FullName, directory_path.Parent.FullName+archive_name+".zip");
             }
             catch (Exception exception_log)
             {

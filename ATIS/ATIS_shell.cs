@@ -410,7 +410,17 @@ namespace ATIS
                 case "4":
                     Console.Clear();
                     Console.WriteLine(config.getShellServerMYSQLSoftwareList());
-                    server.listAllServerApps(server.getConnectionMYSQLString());
+                    if (web.pingHost("www.google.pl"))
+                    {
+                        server.listAllServerApps(server.getConnectionMYSQLString());
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("CONNECTION ERROR - OPERATION FAILED");
+                        Thread.Sleep(5000);
+                        Main(null);
+                    }
                     config.setOperationSwitcher("NOT SELECTED YET");
                     Console.WriteLine("\n\n(B) GO BACK TO MAIN MENU");
                     Console.Write("\nCHOOSEN OPERATION: ");
@@ -426,50 +436,60 @@ namespace ATIS
                             Main(null);
                             break;
                         default:
-                            try
+                            if (web.pingHost("www.google.pl"))
                             {
-                                server.makeListOfNumbersOfApps(server.getConnectionMYSQLString());
-                                if (server.getListOfNumbersOfApps().Contains(Convert.ToInt32(config.getOperationSwitcher())))
+                                try
                                 {
-                                    string source = server.getSourceOfAppById(server.getConnectionMYSQLString(), server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())));
-                                    string main_path = server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName();
-                                    string specific_path = main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher()));
-                                    if (!Directory.Exists(specific_path))
+                                    server.makeListOfNumbersOfApps(server.getConnectionMYSQLString());
+                                    if (server.getListOfNumbersOfApps().Contains(Convert.ToInt32(config.getOperationSwitcher())))
                                     {
-                                        Directory.CreateDirectory(main_path);
-                                        Directory.CreateDirectory(specific_path);
-                                        server.serverDownload(server.getServerRelativeDatabasePath() + source, server.getServerFTPUser(), server.getServerFTPPass(), main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())) + "\\" + source);
-                                        DirectoryInfo directory = new DirectoryInfo(specific_path + "\\");
-                                        wrapper.DecompressServer(directory, source);
-                                        File.Delete(specific_path + "\\" + source);
-                                        Console.Clear();
-                                        Console.WriteLine("OPERATION FINISHED SUCCESSFULLY");
-                                        Thread.Sleep(5000);
-                                        Console.Clear();
-                                        Main(null);
+                                        string source = server.getSourceOfAppById(server.getConnectionMYSQLString(), server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())));
+                                        string main_path = server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName();
+                                        string specific_path = main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher()));
+                                        if (!Directory.Exists(specific_path))
+                                        {
+                                            Directory.CreateDirectory(main_path);
+                                            Directory.CreateDirectory(specific_path);
+                                            server.serverDownload(server.getServerRelativeDatabasePath() + source, server.getServerFTPUser(), server.getServerFTPPass(), main_path + "\\" + server.getIdOfAppByNumber(server.getConnectionMYSQLString(), Convert.ToInt32(config.getOperationSwitcher())) + "\\" + source);
+                                            DirectoryInfo directory = new DirectoryInfo(specific_path + "\\");
+                                            wrapper.DecompressServer(directory, source);
+                                            File.Delete(specific_path + "\\" + source);
+                                            Console.Clear();
+                                            Console.WriteLine("OPERATION FINISHED SUCCESSFULLY");
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+                                            Main(null);
+                                        }
+                                        else
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("THIS ENTRY IS ALREADY INSTALLED");
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+                                            Main(null);
+                                        }
                                     }
                                     else
                                     {
-                                        Console.Clear();
-                                        Console.WriteLine("THIS ENTRY IS ALREADY INSTALLED");
+                                        Console.WriteLine("THERE IS NO SUCH NUMBER - BACK TO MAIN MENU");
                                         Thread.Sleep(5000);
                                         Console.Clear();
                                         Main(null);
                                     }
                                 }
-                                else
+                                catch (Exception exception_log)
                                 {
-                                    Console.WriteLine("THERE IS NO SUCH NUMBER - BACK TO MAIN MENU");
+                                    Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
                                     Thread.Sleep(5000);
                                     Console.Clear();
                                     Main(null);
                                 }
                             }
-                            catch (Exception exception_log)
+                            else
                             {
-                                Console.WriteLine("UNRECOGNISED INPUT - BACK TO MAIN MENU");
-                                Thread.Sleep(5000);
                                 Console.Clear();
+                                Console.WriteLine("CONNECTION ERROR - OPERATION FAILED");
+                                Thread.Sleep(5000);
                                 Main(null);
                             }
                             break;
@@ -480,8 +500,18 @@ namespace ATIS
                     Console.WriteLine(config.getShellServerInstalledSoftwareList());
                     if (Directory.Exists(server.getServerInstallationDirectoryPath() + server.getServerInstallationDirectoryName()))
                     {
-                        server.getServerInstalledSoftwareList();
-                        server.getServerInstalledAppsFromMYSQL(server.getConnectionMYSQLString());
+                        if (web.pingHost("www.google.pl"))
+                        {
+                            server.getServerInstalledSoftwareList();
+                            server.getServerInstalledAppsFromMYSQL(server.getConnectionMYSQLString());
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("CONNECTION ERROR - OPERATION FAILED");
+                            Thread.Sleep(5000);
+                            Main(null);
+                        }
                     }
                     else
                     {
@@ -538,6 +568,73 @@ namespace ATIS
                             }
                             break;
                     }
+                    break;
+                case "6":
+                    Console.Clear();
+                    Console.WriteLine(config.getShellServerFTPUploadMessageList());
+                    config.setOperationSwitcher("NOT SELECTED YET");
+                    Console.Write("THE PATH: ");
+                    config.setOperationSwitcher(Console.ReadLine());
+                    switch (config.getOperationSwitcher())
+                    {
+                        case "ATIS_BACK":
+                            Console.Clear();
+                            Main(null);
+                            break;
+                        default:
+                            if (Directory.Exists(config.getOperationSwitcher()))
+                            {
+                                try
+                                {
+                                    DirectoryInfo directory = new DirectoryInfo(config.getOperationSwitcher());
+                                    var date_time = DateTime.Now;
+                                    string directory_name = "BACKUP_" + date_time.ToShortDateString();
+                                    string file_upload_absolute_path = directory.Parent.FullName + directory_name+".zip";
+                                    wrapper.Compress(directory, directory_name);
+                                    if (web.pingHost("www.google.pl"))
+                                    {
+                                            server.serverUpload(file_upload_absolute_path, server.getServerFTPUser(), server.getServerFTPPass(), server.getServerRelativeBackupPath()+directory_name+".zip");
+                                            if (File.Exists(file_upload_absolute_path))
+                                            {
+                                            File.Delete(file_upload_absolute_path);
+                                            }
+                                            Console.Clear();
+                                            Console.WriteLine("FILE BACKUP SUCCESSFULL");
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+                                            Main(null);
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("FILE TO UPLOAD CREATED BUT THERE IS NO CONNECTION TO THE ATIS SERVER - OPERATION FAILED");
+                                        Thread.Sleep(5000);
+                                        Main(null);
+                                    }
+                                }
+                                catch (Exception exception_log)
+                                {
+                                    Console.Clear();
+                                    Console.Write("=======================================================================================================================\n");
+                                    Console.WriteLine(exception_log.ToString() + "\n");
+                                    Console.Write("=======================================================================================================================\n");
+                                    Console.WriteLine("PREMISSIONS ERROR OR CONNECTION FAILED - OPERATION FAILED");
+                                    Thread.Sleep(5000);
+                                    Main(null);
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("THERE IS NO SUCH DIRECTORY - BACK TO MAIN MENU");
+                                Thread.Sleep(5000);
+                                Console.Clear();
+                                Main(null);
+                            }
+                            break;
+                    }
+                    break;
+                case "7":
+
                     break;
                 case "E":
                     Environment.Exit(0);
