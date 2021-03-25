@@ -25,8 +25,12 @@ namespace ATIS
         "(7) CHECK THE OPERATING SYSTEM UPDATES AND LIST THEM VIA WINDOWS UPDATE API\n" +
         "(8) INSTALL ALL OPERATING SYSTEM UPDATES VIA WINDOWS UPDATE API\n" +
         "(9) FILE DOWNLOADER - DIRECT LINK REQUIRED\n" +
-        "(10) \n" +
-        "(11) firewall / services / autostart / registry / icon / other scripts / systeminfo / download \n" +
+        "(10) OPEN SERVICES SETTINGS WINDOW\n" +
+        "(11) EDIT THE HOSTS FILE\n" +
+        "(12) OPEN REGISTRY EDITOR\n" +
+        "(13) GET SYSTEM INFORMATION\n" +
+        "(14) OPEN TASK / AUTOSTART MANAGER\n" +
+        "(x) firewall / icon / other scripts / changelog \n" +
         "(E) EXIT THE SCRIPT\n";
         private string operation_switcher = "";
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";

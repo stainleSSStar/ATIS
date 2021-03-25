@@ -704,6 +704,47 @@ namespace ATIS
                         Main(null);
                     }
                     break;
+                case "10":
+                    Process SERVICES = new Process();
+                    SERVICES.StartInfo.FileName = "services.msc";
+                    SERVICES.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    SERVICES.Start();
+                    SERVICES.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "11":
+                    Process.Start("notepad.exe", "C:\\Windows\\System32\\drivers\\etc\\hosts");
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "12":
+                    Process REGEDIT = new Process();
+                    REGEDIT.StartInfo.FileName = "C:\\Windows\\System32\\regedt32.exe";
+                    REGEDIT.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    REGEDIT.Start();
+                    REGEDIT.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "13":
+                    Process MSINFO = new Process();
+                    MSINFO.StartInfo.FileName = "C:\\Windows\\System32\\msinfo32.exe";
+                    MSINFO.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    MSINFO.Start();
+                    MSINFO.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "14":
+                    Process SYSTEMSTATUS = new Process();
+                    SYSTEMSTATUS.StartInfo.FileName = "C:\\Windows\\System32\\taskmgr.exe";
+                    SYSTEMSTATUS.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    SYSTEMSTATUS.Start();
+                    SYSTEMSTATUS.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
                 case "E":
                     Environment.Exit(0);
                     break;
