@@ -6,7 +6,7 @@ namespace ATIS
     {
         //CONFIG VARIABLES
         private string shell_title = "Administration Tasks Initialization Shell";
-        private int shell_min_max_window_size_height = 30;
+        private int shell_min_max_window_size_height = 35;
         private int shell_min_max_window_size_width = 120;
         private ConsoleColor shell_text_color = ConsoleColor.DarkYellow;
         private string shell_separator = "=======================================================================================================================";
@@ -14,7 +14,7 @@ namespace ATIS
         "=======================================================================================================================\n" +
         "                                           ADMINISTRATION TASKS INITIALIZATION SHELL                    \n" +
         "=======================================================================================================================\n\n" +
-        "                   WELCOME TO ATIS V0 BETA THIS SHELL ALLOWS TO EXECUTE MULTIPLE ADMINISTRATIVE TASKS\n\n" +
+        "                    WELCOME TO ATIS V0.1 BETA THIS SHELL ALLOWS TO EXECUTE MULTIPLE ADMINISTRATIVE TASKS\n\n" +
         "                                                  CHOOSE ONE BELOW TO START\n\n\n" +
         "(1) CHECK CHECKSUMS OF A FILE (USING WSUMCHECKER)\n" +
         "(2) USERS AND GROUPS MANIPULATION MENU\n" +
@@ -25,12 +25,19 @@ namespace ATIS
         "(7) CHECK THE OPERATING SYSTEM UPDATES AND LIST THEM VIA WINDOWS UPDATE API\n" +
         "(8) INSTALL ALL OPERATING SYSTEM UPDATES VIA WINDOWS UPDATE API\n" +
         "(9) FILE DOWNLOADER - DIRECT LINK REQUIRED\n" +
-        "(10) OPEN SERVICES SETTINGS WINDOW\n" +
-        "(11) EDIT THE HOSTS FILE\n" +
+        "(10) EDIT THE HOSTS FILE\n" +
+        "(11) OPEN SERVICES SETTINGS WINDOW\n" +
         "(12) OPEN REGISTRY EDITOR\n" +
-        "(13) GET SYSTEM INFORMATION\n" +
-        "(14) OPEN TASK / AUTOSTART MANAGER\n" +
-        "(x) firewall / icon / other scripts / changelog \n" +
+        "(13) OPEN TASK / AUTOSTART MANAGER\n" +
+        "(14) OPEN FIREWALL CONTROL WINDOW\n" +
+        "(15) OPEN APPS AND FUNCTIONS WINDOW\n" +
+        "(16) OPEN UAC CONTROL WINDOW\n" +
+        "(17) GET INFORMATION ABOUT OPERATING SYSTEM\n" +
+        "(18)\n" +
+        "(19)\n" +
+        "(20)\n" +
+        "(C) READ THE ATIS CHANGELOG\n" +
+        "(L) READ THE ATIS LICENCE\n" +
         "(E) EXIT THE SCRIPT\n";
         private string operation_switcher = "";
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";

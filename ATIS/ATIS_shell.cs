@@ -705,16 +705,17 @@ namespace ATIS
                     }
                     break;
                 case "10":
+                    Process.Start("notepad.exe", "C:\\Windows\\System32\\drivers\\etc\\hosts");
+                    Console.Clear();
+                    Main(null);
+                    break;
+                    
+                case "11":
                     Process SERVICES = new Process();
                     SERVICES.StartInfo.FileName = "services.msc";
                     SERVICES.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                     SERVICES.Start();
                     SERVICES.WaitForExit();
-                    Console.Clear();
-                    Main(null);
-                    break;
-                case "11":
-                    Process.Start("notepad.exe", "C:\\Windows\\System32\\drivers\\etc\\hosts");
                     Console.Clear();
                     Main(null);
                     break;
@@ -728,20 +729,68 @@ namespace ATIS
                     Main(null);
                     break;
                 case "13":
-                    Process MSINFO = new Process();
-                    MSINFO.StartInfo.FileName = "C:\\Windows\\System32\\msinfo32.exe";
-                    MSINFO.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
-                    MSINFO.Start();
-                    MSINFO.WaitForExit();
-                    Console.Clear();
-                    Main(null);
-                    break;
-                case "14":
                     Process SYSTEMSTATUS = new Process();
                     SYSTEMSTATUS.StartInfo.FileName = "C:\\Windows\\System32\\taskmgr.exe";
                     SYSTEMSTATUS.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                     SYSTEMSTATUS.Start();
                     SYSTEMSTATUS.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "14":
+                    Process FIREWALLSTATUS = new Process();
+                    FIREWALLSTATUS.StartInfo.FileName = "C:\\Windows\\System32\\control.exe";
+                    FIREWALLSTATUS.StartInfo.Arguments = " firewall.cpl";
+                    FIREWALLSTATUS.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    FIREWALLSTATUS.Start();
+                    FIREWALLSTATUS.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "15":
+                    Process APPSUNINSTALL = new Process();
+                    APPSUNINSTALL.StartInfo.FileName = "C:\\Windows\\System32\\appwiz.cpl";
+                    APPSUNINSTALL.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    APPSUNINSTALL.Start();
+                    APPSUNINSTALL.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "16":
+                    Process UACCONTROL = new Process();
+                    UACCONTROL.StartInfo.FileName = "C:\\Windows\\System32\\UserAccountControlSettings.exe";
+                    UACCONTROL.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    UACCONTROL.Start();
+                    UACCONTROL.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "17":
+                    Process SYSTEMINFO = new Process();
+                    SYSTEMINFO.StartInfo.FileName = "C:\\Windows\\System32\\msinfo32.exe";
+                    SYSTEMINFO.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    SYSTEMINFO.Start();
+                    SYSTEMINFO.WaitForExit();
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "C":
+                    Process.Start("notepad.exe", ".\\CHANGELOG.txt");
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "c":
+                    Process.Start("notepad.exe", ".\\CHANGELOG.txt");
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "L":
+                    Process.Start("notepad.exe", ".\\LICENCE.txt");
+                    Console.Clear();
+                    Main(null);
+                    break;
+                case "l":
+                    Process.Start("notepad.exe", ".\\LICENCE.txt");
                     Console.Clear();
                     Main(null);
                     break;
