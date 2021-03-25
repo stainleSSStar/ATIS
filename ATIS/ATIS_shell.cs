@@ -15,6 +15,7 @@ namespace ATIS
             ATIS_web web = new ATIS_web();
             ATIS_server server = new ATIS_server();
             ATIS_wrapper wrapper = new ATIS_wrapper();
+            ATIS_osupdate osupdate = new ATIS_osupdate();
             Console.Title = config.getShellTitle();
             Console.SetWindowSize(config.getWindowWidth(), config.getWindowHeight());
             Console.ForegroundColor = config.getShellTextColor();
@@ -634,7 +635,74 @@ namespace ATIS
                     }
                     break;
                 case "7":
-
+                    if (web.pingHost("www.google.pl"))
+                    {
+                        Console.Clear();
+                        Console.WriteLine(config.getShellOsUpdateCheckList());
+                        osupdate.checkUpdates();
+                        Console.WriteLine("\nDONE\n");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Main(null);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("THERE IS NO CONNECTION - OPERATION FAILED");
+                        Thread.Sleep(5000);
+                        Main(null);
+                    }
+                    break;
+                case "8":
+                    if (web.pingHost("www.google.pl"))
+                    {
+                        Console.Clear();
+                        Console.WriteLine(config.getShellOsUpdateInstallList());
+                        osupdate.installUpdates();
+                        Console.WriteLine("\nDONE\n");
+                        Console.ReadLine();
+                        Console.Clear();
+                        Main(null);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("THERE IS NO CONNECTION - OPERATION FAILED");
+                        Thread.Sleep(5000);
+                        Main(null);
+                    }
+                    break;
+                case "9":
+                    if (web.pingHost("www.google.pl"))
+                    {
+                        Console.Clear();
+                        Console.WriteLine(config.getShellDownloadFileList());
+                        Console.Write("PROVIDE AN DIRECT URL : ");
+                        string url_op9 = Console.ReadLine();
+                        if (url_op9 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                        Console.Write("\nWHERE YOU WANT TO SAVE THE FILE : ");
+                        string path_op9 = Console.ReadLine();
+                        if (path_op9 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                        Console.Write("\nHOW TO NAME A FILE : ");
+                        string name_op9 = Console.ReadLine();
+                        if (name_op9 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                        Console.Write("\nEXTENSION OF THE FILE DOWNLOADED : ");
+                        string ext_op9 = Console.ReadLine();
+                        if (ext_op9 == "ATIS_BACK") { Console.Clear(); Main(null); }
+                        web.downloadFileFromURL(url_op9, path_op9, name_op9, ext_op9);
+                        Console.Clear();
+                        Console.WriteLine("DOWNLOAD OPERATION COMPLETED");
+                        Thread.Sleep(5000);
+                        Console.Clear();
+                        Main(null);
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("THERE IS NO CONNECTION - OPERATION FAILED");
+                        Thread.Sleep(5000);
+                        Main(null);
+                    }
                     break;
                 case "E":
                     Environment.Exit(0);

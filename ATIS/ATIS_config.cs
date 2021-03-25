@@ -22,11 +22,11 @@ namespace ATIS
         "(4) GET ACCESS TO ATIS SERVER TOOLS\n" +
         "(5) REMOVE ATIS TOOLS MENU\n" +
         "(6) BACKUP A FOLDER WITH DATA AND UPLOAD TO ATIS SERVER\n" +
-        "(7) \n" +
-        "(8) \n" +
-        "(9) \n" +
+        "(7) CHECK THE OPERATING SYSTEM UPDATES AND LIST THEM VIA WINDOWS UPDATE API\n" +
+        "(8) INSTALL ALL OPERATING SYSTEM UPDATES VIA WINDOWS UPDATE API\n" +
+        "(9) FILE DOWNLOADER - DIRECT LINK REQUIRED\n" +
         "(10) \n" +
-        "(11) firewall / wupdate\n" +
+        "(11) firewall / services / autostart / registry / icon / other scripts / systeminfo / download \n" +
         "(E) EXIT THE SCRIPT\n";
         private string operation_switcher = "";
         private string wsumchecker_relative_path = ".\\WSUMCHECKER\\WSumChecker.exe";
@@ -86,6 +86,22 @@ namespace ATIS
        "=======================================================================================================================\n\n" +
        "                                 PROVIDE AN ABSOLUTE PATH TO A FOLDER THAT NEEDS TO BE SAVED\n" +
        "                   WHEN UPLOAD IS SUCCESSFULL THEN YOU WILL BE ABLE TO ACCESS IT BY USING ANY FTP MANAGER\n\n\n";
+        private string shell_osupdate_check_list =
+       "=======================================================================================================================\n" +
+       "                                                  AVAILABLE UPDATES TO INSTALL                   \n" +
+       "=======================================================================================================================\n\n" +
+       "                               THIS OPTION CHECKS WHETHER UPDATES ARE AVAILABLE OR NOT ONLY\n" +
+       "                              IN ORDER TO INSTALL THEM SELECT THE SECOND OPTION IN MAIN MENU \n\n\n";
+        private string shell_osupdate_install_list =
+       "=======================================================================================================================\n" +
+       "                                                  UPDATES ARE BEING INSTALLED                \n" +
+       "=======================================================================================================================\n\n" +
+       "                    YOU WILL SEE EVERY SINGLE INSTALLED UPDATE BELOW AS WELL AS ERRORS IF THEY OCCUR \n\n\n";
+        private string shell_download_file_list =
+       "=======================================================================================================================\n" +
+       "                                                        DOWNLOAD A FILE                \n" +
+       "=======================================================================================================================\n\n" +
+       "                             PROVIDE ALL INFORMATION REQUIRED TO DOWNLOAD A FILE WITHOUT BROWSER  \n\n\n";
         //FUNCTIONS (GETTERS / SETTERS)
         public string getShellTitle()
         {
@@ -150,6 +166,18 @@ namespace ATIS
         public string getShellServerFTPUploadMessageList()
         {
             return shell_server_ftp_upload_message_list;
+        }
+        public string getShellOsUpdateCheckList()
+        {
+            return shell_osupdate_check_list;
+        }
+        public string getShellOsUpdateInstallList()
+        {
+            return shell_osupdate_install_list;
+        }
+        public string getShellDownloadFileList()
+        {
+            return shell_download_file_list;
         }
     }
 }

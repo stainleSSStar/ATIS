@@ -20,7 +20,7 @@ namespace ATIS
                     string[] all_files = Directory.GetFiles(path, "*.msi");
                     foreach (string file in all_files)
                     {
-                        Console.WriteLine("Installing ... " + file);
+                        Console.WriteLine("INSTALLING ... " + file);
                         string filef = Path.GetFullPath(file);
                         Process installer_process = new Process();
                         ProcessStartInfo start_info = new ProcessStartInfo();
@@ -30,7 +30,7 @@ namespace ATIS
                         installer_process.StartInfo = start_info;
                         installer_process.Start();
                         installer_process.WaitForExit();
-                        Console.WriteLine("Installed ..." + file);
+                        Console.WriteLine("INSTALLED ..." + file);
                     }
                 }
                 else
@@ -38,7 +38,7 @@ namespace ATIS
                     string[] specific_file = Directory.GetFiles(path, name_of_file + ".msi");
                     foreach (string file in specific_file)
                     {
-                        Console.WriteLine("Installing ... " + file);
+                        Console.WriteLine("INSTALLING ... " + file);
                         string filef = Path.GetFullPath(file);
                         Process installer_process = new Process();
                         ProcessStartInfo start_info = new ProcessStartInfo();
@@ -48,7 +48,7 @@ namespace ATIS
                         installer_process.StartInfo = start_info;
                         installer_process.Start();
                         installer_process.WaitForExit();
-                        Console.WriteLine("Installed ..." + file);
+                        Console.WriteLine("INSTALLED ..." + file);
                     }
                 }
             }
@@ -73,7 +73,7 @@ namespace ATIS
                     foreach (string file in all_files)
                     {
 
-                        Console.WriteLine("Installing ... " + file);
+                        Console.WriteLine("INSTALLING ... " + file);
                         Process installer_process = new Process();
                         ProcessStartInfo start_info = new ProcessStartInfo();
                         start_info.Arguments = arguments;
@@ -84,7 +84,7 @@ namespace ATIS
                         installer_process.StartInfo = start_info;
                         installer_process.Start();
                         installer_process.WaitForExit();
-                        Console.WriteLine("Installed ... " + file);
+                        Console.WriteLine("INSTALLED ... " + file);
                     }
                 }
                 else
@@ -93,7 +93,7 @@ namespace ATIS
                     foreach (string file in specific_file)
                     {
 
-                        Console.WriteLine("Installing ... " + file);
+                        Console.WriteLine("INSTALLING ... " + file);
                         Process installer_process = new Process();
                         ProcessStartInfo start_info = new ProcessStartInfo();
                         start_info.Arguments = "";
@@ -104,7 +104,7 @@ namespace ATIS
                         installer_process.StartInfo = start_info;
                         installer_process.Start();
                         installer_process.WaitForExit();
-                        Console.WriteLine("Installed ... " + file);
+                        Console.WriteLine("INSTALLED ... " + file);
                     }
                 }
             }
