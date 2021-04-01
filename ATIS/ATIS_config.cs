@@ -33,9 +33,9 @@ namespace ATIS
         "(15) OPEN APPS AND FUNCTIONS WINDOW\n" +
         "(16) OPEN UAC CONTROL WINDOW\n" +
         "(17) GET INFORMATION ABOUT OPERATING SYSTEM\n" +
-        "(18)\n" +
-        "(19)\n" +
-        "(20)\n" +
+        "\n" +
+        "\n" +
+        "\n" +
         "(C) READ THE ATIS CHANGELOG\n" +
         "(L) READ THE ATIS LICENCE\n" +
         "(E) EXIT THE SCRIPT\n";
