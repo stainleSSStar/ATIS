@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ATIS
 {
-    class ATIS_web
+    public class ATIS_web
     {
         private string relative_application_download_folder_path = ".\\DOWNLOADS\\";
         public string getRelativeDefaultPath() {

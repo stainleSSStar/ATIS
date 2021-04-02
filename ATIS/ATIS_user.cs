@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ATIS
 {
-    class ATIS_user
+   public class ATIS_user
     {
 
         public void addLocalUser(string name, string pass, string description, string group)

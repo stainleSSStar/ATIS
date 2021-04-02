@@ -2,7 +2,7 @@
 using System.Diagnostics;
 namespace ATIS
 {
-    class ATIS_config
+   public class ATIS_config
     {
         //CONFIG VARIABLES
         private string shell_title = "Administration Tasks Initialization Shell";

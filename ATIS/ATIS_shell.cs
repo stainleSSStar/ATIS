@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 namespace ATIS
 {
-    class ATIS_shell
+   public class ATIS_shell
     {
         public static void Main(string[] args)
         {

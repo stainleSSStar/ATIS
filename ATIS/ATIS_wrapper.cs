@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace ATIS
 {
-    class ATIS_wrapper
+    public class ATIS_wrapper
     {
         public void Compress(DirectoryInfo directory_path, string archive_name)
         {

@@ -4,7 +4,7 @@ using System.IO;
 
 namespace ATIS
 {
-    class ATIS_installer
+   public class ATIS_installer
     {
         private string relative_application_installation_folder_path = ".\\INSTALLATION\\";
         public string getRelativeDefaultPath()

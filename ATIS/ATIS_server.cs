@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace ATIS
 {
-    class ATIS_server
+   public class ATIS_server
     {
         private string server_ftp_user = "ATISUSER";
         public string getServerFTPUser()

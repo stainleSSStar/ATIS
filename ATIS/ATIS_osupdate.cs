@@ -3,7 +3,7 @@ using System.Threading;
 using WUApiLib;
 namespace ATIS
 {
-    class ATIS_osupdate
+   public class ATIS_osupdate
     {
 
 

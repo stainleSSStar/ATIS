@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace ATIS
 {
-    class ATIS_dump
+   public class ATIS_dump
     {
         private string relative_application_dump_folder_path = ".\\DUMPS\\";
 
