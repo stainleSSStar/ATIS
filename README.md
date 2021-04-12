@@ -8,7 +8,7 @@ It strives to be as light as possible to the operating system to enable usage on
 
 Current version number: 0.1 (BETA)
 -----------------------------------------------------------------------
-Available operations to choose and perform in this version:
+Available operations to choose from and perform in this version:
 * Manipulate user accounts in local system.
 * Install files with .exe and .msi extensions with added parameters.
 * Create, compare and calculate checksums of files with WSumChecker included in the projects binary files.
